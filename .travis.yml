@@ -1,0 +1,23 @@
+language: java
+
+sudo: required
+
+services:
+  - docker
+
+install: mvn dependency:resolve
+
+script:
+- mvn -B clean
+- if [ "$TRAVIS_BRANCH" = "master" -o "$TRAVIS_TAG" != "" ]; then mvn -B test package; else mvn -B test; fi
+- if [ "$TRAVIS_BRANCH" = "master" ]; then curl --ftp-create-dirs -T $(ls target/* | grep .jar | egrep -v -e 'original|shaded') -u $USERNAME:$PASSWORD ftp://tonyholroyd.co.uk/; fi
+
+before_deploy: rm target/original*
+deploy:
+  provider: releases
+  api_key: ${API_KEY}
+  file_glob: true
+  file: target/test-tools-*.jar
+  skip_cleanup: true
+  on:
+    tags: true
