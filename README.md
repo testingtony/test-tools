@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/testingtony/test-tools.svg?branch=master)](https://travis-ci.org/testingtony/test-tools)
+[![Dependency Status](https://www.versioneye.com/user/projects/593ab09e822da00069eff977/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/593ab09e822da00069eff977)
 
 Test Tools
 ==========
