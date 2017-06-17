@@ -12,6 +12,9 @@ script:
 - if [ "$TRAVIS_BRANCH" = "master" -o "$TRAVIS_TAG" != "" ]; then mvn -B test package; else mvn -B test; fi
 - if [ "$TRAVIS_BRANCH" = "master" ]; then curl --ftp-create-dirs -T $(ls target/* | grep .jar | egrep -v -e 'original|shaded') -u $USERNAME:$PASSWORD ftp://tonyholroyd.co.uk/; fi
 
+notifications:
+  slack: ${SLACK_KEY}
+
 before_deploy: rm target/original*
 deploy:
   provider: releases
@@ -21,6 +24,3 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-
-notifications:
-  slack: ${SLACK_KEY}
