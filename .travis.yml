@@ -13,7 +13,7 @@ script:
 - if [ "$TRAVIS_BRANCH" = "master" ]; then curl --ftp-create-dirs -T $(ls target/* | grep .jar | egrep -v -e 'original|shaded') -u $USERNAME:$PASSWORD ftp://tonyholroyd.co.uk/; fi
 
 notifications:
-  slack: ${SLACK_KEY}
+  slack: "${SLACK_KEY}"
 
 before_deploy: rm target/original*
 deploy:
