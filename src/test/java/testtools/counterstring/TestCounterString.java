@@ -46,7 +46,7 @@ public class TestCounterString {
 
     @Test
     public void stringsAreCorrectLength() {
-        CounterString generator = new CounterString('&', '$');
+        CounterString generator = new CounterString('&', '^');
         Random r = new Random();
         for(int i = 0; i < 100; i++) {
             int wantedLength = r.nextInt(32000);
