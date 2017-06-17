@@ -40,8 +40,7 @@ public class TestCounterString {
 
     @Test
     public void singleParamConstructorSetsTerminatorAndSeparator() {
-        CounterString cs = new CounterString('&');
-
+        CounterString cs = new CounterString('£');
         assertThat(cs.generate(3), is("£3£"));
     }
 
