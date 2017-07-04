@@ -10,7 +10,7 @@ install: mvn dependency:resolve
 script:
 - mvn -B clean
 - if [ "$TRAVIS_BRANCH" = "master" -o "$TRAVIS_TAG" != "" ]; then mvn -B test package; else mvn -B test; fi
-- if [ "$TRAVIS_BRANCH" = "master" ]; then curl --ftp-create-dirs -T $(ls target/* | grep .jar | egrep -v -e 'original|shaded') -u $USERNAME:$PASSWORD ftp://tonyholroyd.co.uk/; fi
+- if [ "$TRAVIS_BRANCH" = "master" ]; then curl --ftp-create-dirs -T $(ls target/* | grep .jar | egrep -v -e 'original|shaded') -u $USERNAME:$PASSWORD -k sftp://home140044919.1and1-data.host; fi
 
 before_deploy: rm target/original*
 deploy:
